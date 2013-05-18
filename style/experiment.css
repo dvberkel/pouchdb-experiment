@@ -1,0 +1,11 @@
+.area {
+    width: 640px;
+}
+
+.capture {
+    height: 480px;
+    background: #cccccc;
+}
+
+.log {
+}
