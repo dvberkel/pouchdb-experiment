@@ -1,13 +1,11 @@
 (function(thx, document, Pouch, undefined){
-    var initializationLogger = thx.loggerFor('log', 'Initialisation');
-    var wrapErrorHandlerAround = thx.wrapperWith(initializationLogger);
+    var logger = thx.loggerFor('log', 'Experiment');
+    var wrapErrorHandlerAround = thx.wrapperWith(logger);
 
-    initializationLogger.log(Pouch ? "Pouch found" : "Pouch not found");
+    try {
+	var db = Pouch('events');
 
-    Pouch.allDbs(wrapErrorHandlerAround(
-	"an error occured while retrieving all database",
-	function(response){ initializationLogger.log("found " + response.length + " databases"); }
-    ));
-
-    var db = Pouch('events');
+    } catch(e) {
+	logger.log('not initalized correctly')
+    }
 })(thx, document, Pouch);
