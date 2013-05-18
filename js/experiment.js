@@ -1,6 +1,5 @@
 (function(thx, document, Pouch, undefined){
-    var initializationLogger = thx.loggerFor('log');
-
+    var initializationLogger = thx.loggerFor('log', 'Initialisation');
     var wrapErrorHandlerAround = thx.wrapperWith(initializationLogger);
 
     initializationLogger.log(Pouch ? "Pouch found" : "Pouch not found");

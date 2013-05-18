@@ -1,7 +1,12 @@
 (function(thx, document, undefined){
-    var Logger = function(id) {
+    var Logger = function(id, name) {
+	var container = document.createElement('div');
+	var header = document.createElement('h3');
+	header.textContent = name;
+	container.appendChild(header);
 	var ul = document.createElement('ul');
-	document.getElementById(id).appendChild(ul);
+	container.appendChild(ul);
+	document.getElementById(id).appendChild(container);
 
 	var timestamp = thx.timestampFactory();
 
@@ -12,8 +17,8 @@
 	}
     };
 
-    thx.loggerFor = function(id){
-	var logger = new Logger(id);
+    thx.loggerFor = function(id, name){
+	var logger = new Logger(id, name || '?');
 	logger.log('Logger created');
 	return logger;
     };
